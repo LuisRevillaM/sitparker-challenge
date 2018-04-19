@@ -19,7 +19,7 @@ function addTwoStrings(strA, strB) {
     let b = arrB[bLength - i];
 
     if (a && b) {
-      let sum = addSingleDigits(Number(a) + Number(b) + carried);
+      let sum = addSingleDigits(Number(a), Number(b), carried);
       let sumStr = sum.toString();
 
       if (hasTwoDigits(sum)) {
@@ -31,7 +31,7 @@ function addTwoStrings(strA, strB) {
         carry = false;
       }
     } else if (a) {
-      let sum = addSingleDigits(Number(a) + carried);
+      let sum = addSingleDigits(Number(a), carried);
       let sumStr = sum.toString();
 
       if (hasTwoDigits(sum)) {
@@ -43,7 +43,7 @@ function addTwoStrings(strA, strB) {
         carry = false;
       }
     } else if (b) {
-      let sum = addSingleDigits(Number(b) + carried);
+      let sum = addSingleDigits(Number(b), carried);
       let sumStr = sum.toString();
 
       if (hasTwoDigits(sum)) {
@@ -70,16 +70,17 @@ function addSingleDigits() {
 
   addends.forEach(num => {
     if (hasTwoDigits(num)) {
-      new Error("Addend(s) with two digits");
+      throw "Addend(s) with two digits";
+    } else {
+      accum = accum + num;
     }
-    accum = accum + num;
   });
 
   return accum;
 }
 
 function hasTwoDigits(num) {
-  if (num > 9) {
+  if (num > 9 || num < -9) {
     return true;
   } else {
     return false;

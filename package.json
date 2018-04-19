@@ -12,6 +12,7 @@
     "regenerator-runtime": "^0.11.1"
   },
   "scripts": {
-    "test": "jest"
+    "test:all": "jest --verbose",
+    "test:add": "jest add --verbose"
   }
 }
