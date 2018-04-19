@@ -1,4 +1,4 @@
-import utils from "../utils.js";
+import utils from "../js/utils.js";
 
 const { addTwoStrings, addSingleDigits, hasTwoDigits, lastCharacter } = utils;
 
@@ -21,7 +21,7 @@ test("hasTwoDigits returns true if input has more than one digit", () => {
   expect(hasTwoDigits(19)).toBe(true);
 });
 
-test("lastCharacter returns last character of a string", () => {
+test("lastCharacter returns the last character of a string", () => {
   expect(lastCharacter("2235lfdP")).toBe("P");
   expect(lastCharacter("8963547")).toBe("7");
 });

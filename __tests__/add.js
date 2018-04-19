@@ -1,4 +1,4 @@
-import add from "../add.js";
+import add from "../js/add.js";
 
 test("adds multiple inputs correctly", () => {
   expect(add("3034", "9", "493", "175672")).toBe(
