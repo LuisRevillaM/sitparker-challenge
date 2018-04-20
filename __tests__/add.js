@@ -1,5 +1,14 @@
 import add from "../js/add.js";
 
+test("handles single inputs correctly", () => {
+  expect(add("3034")).toBe((3034).toString());
+  expect(add("-6465")).toBe((-6465).toString());
+});
+
+test("handles negative zero", () => {
+  expect(add("3034", "-0")).toBe((3034).toString());
+});
+
 test("adds multiple inputs correctly", () => {
   expect(add("3034", "9", "493", "175672")).toBe(
     (3034 + 9 + 493 + 175672).toString()

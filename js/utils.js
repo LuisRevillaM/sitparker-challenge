@@ -159,6 +159,25 @@ function lastCharacter(str) {
   return last;
 }
 
+function negativeZeros(n) {
+  const nSplit = n.split("");
+
+  if (nSplit[0] === "-") {
+    console.log(nSplit[0]);
+    let allZero = true;
+
+    nSplit.forEach((e, i) => {
+      if (e !== "0" && i > 0) {
+        allZero = false;
+      }
+    });
+
+    return allZero;
+  } else {
+    return false;
+  }
+}
+
 function signsDiffer(a, b) {
   const numA = Number(a),
     numB = Number(b);
@@ -178,7 +197,8 @@ const utils = {
   hasTwoDigits,
   lastCharacter,
   signsDiffer,
-  subtractTwoStrings
+  subtractTwoStrings,
+  negativeZeros
 };
 
 /* */

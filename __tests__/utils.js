@@ -6,8 +6,14 @@ const {
   hasTwoDigits,
   lastCharacter,
   signsDiffer,
-  subtractTwoStrings
+  subtractTwoStrings,
+  negativeZeros
 } = utils;
+
+test("negativeZeros works", () => {
+  expect(negativeZeros("-000")).toBe(true);
+  expect(negativeZeros("000")).toBe(false);
+});
 
 test("subtractTwoStrings works with inputs of different sign", () => {
   expect(subtractTwoStrings("-90", "10")).toBe("-80");
