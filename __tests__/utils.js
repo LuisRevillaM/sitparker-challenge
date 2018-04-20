@@ -29,8 +29,8 @@ test("addTwoStrings returns a string with string inputs", () => {
   expect(typeof addTwoStrings("98", "12")).toBe("string");
 });
 
-test("addTwoStrings returns a negative number if inputs are negative", () => {
-  let sum = addTwoStrings("-78", "-36", true);
+test("addTwoStrings returns a negative sum if inputs are negative", () => {
+  let sum = addTwoStrings("-78", "-36");
   expect(sum[0]).toBe("-");
   expect(sum).toBe((-78 - 36).toString());
 });

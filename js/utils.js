@@ -1,11 +1,13 @@
-function addTwoStrings(strA, strB, neg = false) {
-  let loopTest;
+function addTwoStrings(strA, strB) {
+  let loopTest, neg;
   const arrA = strA.split("");
   const arrB = strB.split("");
-  if (neg) {
+  if (arrA[0] === "-" && arrB[0] === "-") {
+    neg = true;
     arrA.shift();
     arrB.shift();
   }
+
   const aLength = arrA.length;
   const bLength = arrB.length;
   const result = [];
