@@ -6,6 +6,12 @@ test("adds multiple inputs correctly", () => {
   );
 });
 
+test("handles negative inputs correctly", () => {
+  expect(add("10", "-3004", "5783", "23", "-27")).toBe(
+    (10 - 3004 + 5783 + 23 - 27).toString()
+  );
+});
+
 test("addition is commutative", () => {
   expect(add("9650", "3547")).toBeDefined();
   expect(add("9650", "3547")).toEqual(add("3547", "9650"));

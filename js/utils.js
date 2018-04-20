@@ -1,7 +1,11 @@
-function addTwoStrings(strA, strB) {
+function addTwoStrings(strA, strB, neg = false) {
   let loopTest;
   const arrA = strA.split("");
   const arrB = strB.split("");
+  if (neg) {
+    arrA.shift();
+    arrB.shift();
+  }
   const aLength = arrA.length;
   const bLength = arrB.length;
   const result = [];
@@ -61,7 +65,70 @@ function addTwoStrings(strA, strB) {
     result.unshift((1).toString());
   }
 
+  if (neg) {
+    result.unshift("-");
+  }
+
   return result.join("");
+}
+
+function subtractTwoStrings(strA, strB) {
+  let min, sub, neg, loopTest;
+  const result = [];
+  const arrA = strA.split("");
+  const arrB = strB.split("");
+
+  if (Math.abs(strA) >= Math.abs(strB)) {
+    min = arrA;
+    sub = arrB;
+  } else {
+    min = arrB;
+    sub = arrA;
+  }
+
+  if (min[0] === "-") {
+    neg = true;
+    min.shift();
+  } else {
+    neg = false;
+    sub.shift();
+  }
+
+  loopTest = min.length + 1;
+
+  for (let i = 1; i < loopTest; i++) {
+    let a = min[min.length - i],
+      b = sub[sub.length - i];
+
+    let aNum = Number(a),
+      bNum = Number(b);
+    if (b !== undefined && bNum > aNum) {
+      reGroup(min, min.length - i);
+      let op = Number(min[min.length - i]) - bNum;
+      result.unshift(op.toString());
+    } else if (b !== undefined) {
+      let op = aNum - bNum;
+      result.unshift(op.toString());
+    } else {
+      result.unshift(aNum.toString());
+    }
+  }
+
+  if (neg === true && Number(result.join("")) !== 0) {
+    result.unshift("-");
+    return result.join("");
+  } else {
+    return result.join("");
+  }
+}
+
+function reGroup(arr, i) {
+  if (arr[i - 1] === "0") {
+    reGroup(arr, i - 1);
+  }
+  arr[i - 1] = (Number(arr[i - 1]) - 1).toString();
+
+  arr[i] = (Number(arr[i]) + 10).toString();
 }
 
 function addSingleDigits() {
@@ -92,11 +159,28 @@ function lastCharacter(str) {
   return last;
 }
 
+function signsDiffer(a, b) {
+  const numA = Number(a),
+    numB = Number(b);
+
+  if (numA < 0 && numB >= 0) {
+    return true;
+  } else if (numA >= 0 && numB < 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 const utils = {
   addTwoStrings,
   addSingleDigits,
   hasTwoDigits,
-  lastCharacter
+  lastCharacter,
+  signsDiffer,
+  subtractTwoStrings
 };
+
+/* */
 
 export default utils;
