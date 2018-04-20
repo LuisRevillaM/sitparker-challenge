@@ -163,7 +163,6 @@ function negativeZeros(n) {
   const nSplit = n.split("");
 
   if (nSplit[0] === "-") {
-    console.log(nSplit[0]);
     let allZero = true;
 
     nSplit.forEach((e, i) => {
